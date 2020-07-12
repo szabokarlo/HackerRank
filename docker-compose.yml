@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  docker-webserver:
+    image: php:7.4-alpinedocker
+    container_name: docker-webserver
+    build: .
+    working_dir: /var/www
+    command: php -S 0.0.0.0:8080 -t public
+    environment:
+      docker: "true"
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/var/www
